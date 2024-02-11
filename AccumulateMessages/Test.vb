@@ -20,9 +20,10 @@ Class Test
                     Console.Clear()
                     Console.WriteLine("Messages Cleared")
                     UserMessages(userInput, True)
+
                 Case Else
                     UserMessages(userInput, False)
-                    userInput = ""
+                    'userInput = ""
                     Console.Clear()
                     Console.WriteLine("Please type a message:" & vbCrLf & vbCrLf _
                               & " D: Display all saved messages" & vbCrLf _
@@ -61,11 +62,13 @@ Class Test
 
         AreEqual(expected, UserMessages("", False))
 
+
         Console.WriteLine("Call with many sequential messages:")
         expected = ""
         For i = LBound(testdata) To UBound(testdata)
             expected += testdata(i) & vbCrLf
             actual = UserMessages(testdata(i), False)
+
         Next
 
         AreEqual(expected, actual)
@@ -73,8 +76,10 @@ Class Test
         Console.WriteLine("Call with clear messages True:")
         expected = ""
         actual = UserMessages("", True)
+
         AreEqual(expected, actual)
         actual = UserMessages("Anything", True)
+
         AreEqual(expected, actual)
 
         Console.WriteLine("Call with clear midway in sequential messages:")
@@ -84,10 +89,12 @@ Class Test
             If i = clearAfter Then
                 expected = ""
                 UserMessages("", True)
+
             End If
 
             expected += testdata(i) & vbCrLf
             actual = UserMessages(testdata(i), False)
+
         Next
 
         AreEqual(expected, actual)
@@ -118,7 +125,7 @@ Class Test
         Console.WriteLine(Actual)
         Console.ForegroundColor = textcolor
         Console.WriteLine()
-        'Console.WriteLine(StrDup(15, "*"))
+        Console.WriteLine(StrDup(15, "*"))
         Console.ForegroundColor = ConsoleColor.White
 
     End Function
