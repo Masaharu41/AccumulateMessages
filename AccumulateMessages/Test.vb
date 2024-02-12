@@ -23,7 +23,7 @@ Class Test
 
                 Case Else
                     UserMessages(userInput, False)
-                    'userInput = ""
+                    userInput = ""
                     Console.Clear()
                     Console.WriteLine("Please type a message:" & vbCrLf & vbCrLf _
                               & " D: Display all saved messages" & vbCrLf _
@@ -88,6 +88,7 @@ Class Test
         For i = LBound(testdata) To UBound(testdata)
             If i = clearAfter Then
                 expected = ""
+
                 UserMessages("", True)
 
             End If

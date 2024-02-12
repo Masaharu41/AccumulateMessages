@@ -2,7 +2,7 @@
 'RCET 2265
 'Spring 2024
 'Accumulated Messages
-'
+'https://github.com/Masaharu41/AccumulateMessages.git
 
 Option Explicit On
 Option Strict On
@@ -10,23 +10,27 @@ Option Strict On
 Module MessageProgram
     Sub Main(args As String())
         'uncomment to test interactively
-        Test.Manual()
-        '  Test.Auto()
+        'Test.Manual()
+        Test.Auto()
     End Sub
 
     Function UserMessages(ByRef newMessage As String, ByVal clear As Boolean) As String
         Dim accumulatedMessages$
         Static priorMessages As String
 
-        'your code here
-        If clear = True Then
+        If newMessage = "" Then
+            accumulatedMessages = ""
+        Else
+            If clear = True Then
+                priorMessages = ""
+                accumulatedMessages = ""
+            ElseIf clear = False Then
+                accumulatedMessages = priorMessages & newMessage & vbCrLf
+                priorMessages = accumulatedMessages
 
-            priorMessages = ""
-        ElseIf clear = False Then
-            accumulatedMessages = priorMessages & newMessage
-            priorMessages = accumulatedMessages & vbCrLf
-
+            End If
         End If
+
 
         Return accumulatedMessages
     End Function
