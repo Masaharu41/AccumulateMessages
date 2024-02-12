@@ -20,6 +20,7 @@ Module MessageProgram
 
         If newMessage = "" Then
             accumulatedMessages = ""
+            priorMessages = ""
         Else
             If clear = True Then
                 priorMessages = ""
