@@ -10,28 +10,30 @@ Option Strict On
 Module MessageProgram
     Sub Main(args As String())
         'uncomment to test interactively
-        'Test.Manual()
+        ' Test.Manual()
         Test.Auto()
     End Sub
 
     Function UserMessages(ByRef newMessage As String, ByVal clear As Boolean) As String
         Dim accumulatedMessages$
         Static priorMessages As String
-
-        If newMessage = "" Then
-            accumulatedMessages = ""
+        'If structure to clear or enter normal code
+        If clear = True Then
             priorMessages = ""
-        Else
-            If clear = True Then
-                priorMessages = ""
+            accumulatedMessages = ""
+        ElseIf clear = False Then
+            'Multi use If structure which rejects when the input is "" 
+            'Will track and accumulate the string values until a clear statement is applied.
+            'Contains the special ReadBack case that will return the accumulated data
+            If newMessage = "" Then
                 accumulatedMessages = ""
-            ElseIf clear = False Then
+            ElseIf newMessage = "ReadBack" Then
+                accumulatedMessages = priorMessages
+            Else
                 accumulatedMessages = priorMessages & newMessage & vbCrLf
                 priorMessages = accumulatedMessages
-
             End If
         End If
-
 
         Return accumulatedMessages
     End Function

@@ -15,7 +15,7 @@ Class Test
                 Case "D"
                     Console.Clear()
                     Console.WriteLine("Messages:" & vbCrLf)
-                    Console.WriteLine(UserMessages("", False))
+                    Console.WriteLine(UserMessages("ReadBack", False))
                 Case "C"
                     Console.Clear()
                     Console.WriteLine("Messages Cleared")
@@ -23,7 +23,7 @@ Class Test
 
                 Case Else
                     UserMessages(userInput, False)
-                    userInput = ""
+                    ' userInput = ""
                     Console.Clear()
                     Console.WriteLine("Please type a message:" & vbCrLf & vbCrLf _
                               & " D: Display all saved messages" & vbCrLf _
